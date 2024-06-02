@@ -1,70 +1,181 @@
-# Getting Started with Create React App
+# Shoppy Project - Soir
+---
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## framework
+<br/>
 
-## Available Scripts
+|*Program*|*Version*|
+|:--|:--|
+|<img src="https://img.shields.io/badge/Yarn-2C8EBB?style=for-the-badge&logo=Yarn&logoColor=white">|<img src=" https://img.shields.io/badge/Yarn-v4.2.2-2C8EBB?logo=yarn&logoColor=2C8EBB">|
+|<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black">|<img src=" https://img.shields.io/badge/Javascript-ES14--2023-F7DF1E?logo=javascript&logoColor=F7DF1E">|
+|<img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=React&logoColor=black">|<img src=" https://img.shields.io/badge/React-v18.3.1-61DAFB?logo=react&logoColor=61DAFB">|
+|<img src="https://img.shields.io/badge/Create--React--App-52e0c4?style=for-the-badge&logo=Create%20React%20App&logoColor=black">|<img src=" https://img.shields.io/badge/Create--React--App-v18.3.1-52e0c4?logo=createreactapp&logoColor=52e0c4">|
+|<img src="https://img.shields.io/badge/React%20Router-CA4245?style=for-the-badge&logo=React%20Router&logoColor=white">|<img src=" https://img.shields.io/badge/React--Router-v6.23.1-CA4245?logo=reactrouter&logoColor=CA4245">|
+|<img src="https://img.shields.io/badge/React--Query-FF4154?style=for-the-badge&logo=reactquery&logoColor=white">|<img src=" https://img.shields.io/badge/@tanstack/React--Query-v5.40.0-FF4154?logo=createreactapp&logoColor=FF4154">|
+|<img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=Firebase&logoColor=black">|<img src=" https://img.shields.io/badge/Firebase-v18.3.1-FFCA28?logo=firebase&logoColor=FFCA28">|
+|<img src="https://img.shields.io/badge/Tailwindcss-06B6D4?style=for-the-badge&logo=Tailwindcss&logoColor=white">|<img src=" https://img.shields.io/badge/Tailwind%20CSS-v3.4.3-06B6D4?logo=tailwindcss&logoColor=06B6D4">|
 
-In the project directory, you can run:
+<br/>
 
-### `yarn start`
+## Libraries
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+|*Program*|*Version*|
+|:--|--|
+|<img src="https://img.shields.io/badge/React%20Icons-e91e63?style=for-the-badge&logo=React&logoColor=white">|<img src=" https://img.shields.io/badge/React--Icons-v5.2.1-e91e63?logo=react&logoColor=e91e63">|
+|<img src="https://img.shields.io/badge/@tailwindcss%20line--clamp-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white">|<img src=" https://img.shields.io/badge/@tailwindcss/line--clamp-v0.4.4-06B6D4?logo=tailwindcss&logoColor=06B6D4">|
+|<img src="https://img.shields.io/badge/Uuid-7fa9cf?style=for-the-badge&logo=SecurityScorecard&logoColor=white">|<img src=" https://img.shields.io/badge/uuid-v4-7fa9cf?logo=securityscorecard&logoColor=7fa9cf">|
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Package Install
+<br/>
 
-### `yarn test`
+<img src=" https://img.shields.io/badge/React--Router-v6.23.1-CA4245?logo=reactrouter&logoColor=CA4245">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+yarn add react-router-dom
+```
+<br/>
+<img src=" https://img.shields.io/badge/@tanstack/React--Query-v5.40.0-FF4154?logo=createreactapp&logoColor=FF4154">
 
-### `yarn build`
+```
+yarn add @tanstack/react-query
+```
+<br/>
+<img src=" https://img.shields.io/badge/Firebase-v18.3.1-FFCA28?logo=firebase&logoColor=FFCA28">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+yarn add firebase
+```
+<br/>
+<img src=" https://img.shields.io/badge/Tailwind%20CSS-v3.4.3-06B6D4?logo=tailwindcss&logoColor=06B6D4">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+yarn add -D tailwindcss
+yarn tailwindcss init
+```
+<br/>
+<img src=" https://img.shields.io/badge/@tailwindcss/line--clamp-v0.4.4-06B6D4?logo=tailwindcss&logoColor=06B6D4">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+yarn add -D @tailwindcss/line-clamp
+```
+<br/>
+<img src=" https://img.shields.io/badge/uuid-v4-7fa9cf?logo=securityscorecard&logoColor=7fa9cf">
 
-### `yarn eject`
+```
+yarn add uuid
+import { v4 as uuid } from 'uuid';
+```
+<br/>
+<img src=" https://img.shields.io/badge/React--Icons-v5.2.1-e91e63?logo=react&logoColor=e91e63">
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+yarn add react-icons
+```
+<br/>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Trouble Shooting
+---
+#### ERR : Permission Denied (in Promise)
+[참고자료]("https://velog.io/@aocl333/Firebase-PERMISSIONDENIED-Permission-denied-error")
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Firebase Project Console 페이지에서,
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Console Menu > Realtime Database > Rules > false를 true로 변경
 
-## Learn More
+```
+{
+  "rules": {
+    ".read": true,
+    ".write": true,
+  }
+}
+```
+<br/>
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Firebase API Network Setting
+[Official Docs]("https://firebase.google.com/docs?authuser=0")
+<br/>
+#### 1. Authentication - Google Sign-in
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  <details>
+  <summary> view full code</summary>
+  <div markdown='1'>
 
-### Code Splitting
+  ```
+  import { initializeApp } from "firebase/app";
+  import { getAuth, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  const firebaseConfig = {
+    apiKey: [my apiKey],
+    authDomain: "[projectId].firebase.com",
+    databaseURL: "https://[projectId]-default-rtdb.[my database location].firebasedatabase.app",
+    projectId: [my ProjectID],
+  }
 
-### Analyzing the Bundle Size
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth();
+  const provider = new GoogleAuthProvider
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  onAuthStateChanged(auth, (user) => {
+    if(user) {
+      // User is signed in
+    } else {
+      // User is signed out
+    }
+  })
 
-### Making a Progressive Web App
+  signInWithPopup(auth, provider)
+    .then((res) => {
+      const user = res.user;
+    }) .catch(console.error);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  signOut(auth).then(() => {
+    // Sign-out successful
+  }) .catch(console.error)
+  ```
 
-### Advanced Configuration
+  </div>
+  </details>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br/>
 
-### Deployment
+#### 2. Realtime Database - Firebase CRUD
+  <details>
+    <summary>view Full Code</summary>
+    <div markdown='1'>
+    
+    ```
+    import { initializeApp } from "firebase/app";
+    import { getDatabase } from "firebase/database";
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    const app = initializeApp(firebaseConfig)
+    const database = getDatabase(app)
 
-### `yarn build` fails to minify
+    // Read - get once
+    get(ref(database, '[Object Key]'))
+      .then((snapshot) => {
+        if(snapshot.exists()) {
+          return Object.value(snapshot.val())
+        } else {
+          console.log("No Data Available")
+        }
+      }).catch(console.error);
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+    // Add or Update
+    function writeUserData(userId, name, email, imageUrl) {
+      return set(ref( database, '[Object Key]'), {
+        username: name,
+        email: email,
+        profile_picture: imageUrl
+      })
+    }
+
+    // Delete
+    remove(ref(database, '[Object Key]'))
+
+
+    ```
+    </div>
+  </details>

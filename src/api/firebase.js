@@ -17,8 +17,21 @@ const database = getDatabase(app);
 
 // Google Authentication
 export function onUserStateChanged(callback) {
-  onAuthStateChanged(auth, (user) => {
-    callback(user);
+  onAuthStateChanged(auth, async (user) => {
+    const updatedUser = user ? await adminUser(user) : null;
+    callback(updatedUser)
+  })
+}
+
+async function adminUser(user) {
+  return get(ref(database, 'admins'))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        const admins = snapshot.val();
+        const isAdmin = admins.includes(user.uid);
+        return { ...user, isAdmin };
+      }
+      return user;
   })
 }
 
