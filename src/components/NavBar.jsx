@@ -1,15 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { IoBagAddSharp, IoCartOutline } from 'react-icons/io5';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { login, logout, onUserStateChanged } from '../api/firebase';
+import { useAuthContext } from '../context/AuthContext';
+import { IoBagAddSharp, IoCartOutline } from 'react-icons/io5';
 import User from './User';
 
 export default function NavBar() {
-	const [user, setUser] = useState();
-
-	useEffect(() => {
-		onUserStateChanged(setUser)
-	}, []);
+	const {user, login, logout} = useAuthContext();
+	
   return (
 		<div className='p-4 flex flex-row justify-between items-center'>
 			<Link to='/'>
@@ -22,7 +19,7 @@ export default function NavBar() {
 						<IoCartOutline className='text-3xl' />
 					</Link>
 				)}
-				{user && (
+				{user && user.isAdmin && (
 					<Link to='/products/new'>
 						<IoBagAddSharp className='text-3xl' />
 					</Link>

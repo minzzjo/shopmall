@@ -10,20 +10,21 @@ import Products from './pages/Products';
 import NewProduct from './pages/NewProduct';
 import ProductDetail from './pages/ProductDetail';
 import MyCart from './pages/MyCart';
+import ProtectRoute from './routes/ProtectRoute';
 
 const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <App />,
-    errorElement: <NotFound />,
-    children: [
-      { index: true, element: <Home /> },
-      { path: '/products', element: <Products /> },
-      { path: '/products/new', element: <NewProduct /> },
-      { path: 'products/:id', element: <ProductDetail /> },
-      { path: '/carts', element: <MyCart /> },
-    ],
-  },
+	{
+		path: '/',
+		element: <App />,
+		errorElement: <NotFound />,
+		children: [
+			{ index: true, element: <Home /> },
+			{ path: '/products', element: <Products /> },
+			{ path: '/products/new', element: (<ProtectRoute requireAdmin><NewProduct /></ProtectRoute>) },
+			{ path: 'products/:id', element: <ProductDetail /> },
+			{ path: '/carts', element: (<ProtectRoute><MyCart /></ProtectRoute>) },
+		],
+	},
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
