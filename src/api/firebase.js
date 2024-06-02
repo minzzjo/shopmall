@@ -22,21 +22,13 @@ export function onUserStateChanged(callback) {
   })
 }
 
-export async function login() {
-  return signInWithPopup(auth, provider)
-    .then((res) => {
-      const user = res.user;
-      console.log(user);
-      return user;
-    })
-    .catch(console.error);
+export function login() {
+  signInWithPopup(auth, provider).catch(console.error);
 }
 
 
-export async function logout() {
-  signOut(auth)
-    .then(() => console.log('logout!'))
-    .catch(console.error);
+export function logout() {
+  signOut(auth).catch(console.error);
 }
 
 // Realtime Database - Products
