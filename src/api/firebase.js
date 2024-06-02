@@ -1,5 +1,7 @@
 import { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
+import { get, getDatabase, ref, set } from 'firebase/database';
+import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
 	apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -11,12 +13,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const provider = new GoogleAuthProvider();
+const database = getDatabase(app);
 
-export function onUserStateChanged() {
+// Google Authentication
+export function onUserStateChanged(callback) {
   onAuthStateChanged(auth, (user) => {
-    if (user.exists()) {
-      console.log(user);
-    }
+    callback(user);
   })
 }
 
@@ -35,4 +37,21 @@ export async function logout() {
   signOut(auth)
     .then(() => console.log('logout!'))
     .catch(console.error);
+}
+
+// Realtime Database - Products
+export async function addNewProduct(image, product) {
+  const id = uuid()
+  return set(ref(database, `/product/${id}`), {
+    ...product,
+    id, price: parseInt(product.price), image, options: product.options.split(''),
+  })
+}
+
+export async function getProducts() {
+	return get(ref(database, 'products')).then((snapshot) => {
+		if (snapshot.exists()) {
+			return Object.values(snapshot.val());
+		}
+	});
 }

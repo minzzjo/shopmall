@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { IoBagAddSharp, IoCartOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-import { login, logout } from '../api/firebase';
+import { login, logout, onUserStateChanged } from '../api/firebase';
 
 export default function NavBar() {
 	const [user, setUser] = useState();
@@ -14,6 +14,13 @@ export default function NavBar() {
 	const handleLogout = () => {
 		logout().then(setUser)
 	}
+
+	useEffect(() => {
+		onUserStateChanged((user) => {
+			console.log(user);
+			setUser(user);
+		})
+	}, []);
   return (
 		<div className='p-4 flex flex-row justify-between items-center'>
 			<Link to='/'>
