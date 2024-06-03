@@ -58,22 +58,24 @@ export async function getProducts() {
     .then((snapshot) => {
 		if (snapshot.exists()) {
 			return Object.values(snapshot.val());
-		}
+    }
+      return [];
 	});
 }
 
 // Realtime Database - Carts
-export async function getCarts() {
-  return get(ref(database, 'carts'))
+export async function getCarts(userId) {
+  return get(ref(database, `carts/${userId}`))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        return Object.values(snapshot.val());
+        const items = snapshot.val() || {};
+        return Object.values(items);
     }
   })
 }
 
 export async function addOrUpdateCarts(userId, product) {
-  return set(ref(database, `carts/${userId}/${product.id}`, product));
+  return set(ref(database, `carts/${userId}/${product.id}`), product);
 }
 
 export async function removeCarts(userId, productId) {
