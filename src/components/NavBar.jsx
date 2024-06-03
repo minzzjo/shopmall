@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
 import { IoBagAddSharp, IoCartOutline } from 'react-icons/io5';
 import User from './User';
+import Button from "./element/Button";
 
 export default function NavBar() {
 	const {user, login, logout} = useAuthContext();
@@ -25,8 +26,8 @@ export default function NavBar() {
 					</Link>
 				)}
 				{user && <User user={user} />}
-				{!user && <button onClick={login}>Login</button>}
-				{user && <button onClick={logout}>Logout</button>}
+				{!user && <Button onClick={login} text={'Login'} />}
+				{user && <Button onClick={logout} text={'Logout'} />}
 			</nav>
 		</div>
 	);

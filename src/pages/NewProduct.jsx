@@ -1,4 +1,3 @@
-import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { uploadImage } from '../api/uploader';
 import { addNewProduct } from '../api/firebase';
@@ -13,7 +12,6 @@ export default function NewProduct() {
     const { name, value, files } = e.target;
     if (name === 'file') {
       setFile(files && files[0]);
-      console.log(files[0]);
       return;
     }
     setProduct((product) => ({ ...product, [name]: value }));
@@ -44,7 +42,7 @@ export default function NewProduct() {
 				<input type='text' name='category' value={product.category ?? ''} id='category' required placeholder='카테고리' onChange={handleChange} className={INPUTCSS} />
 				<input type='text' name='description' value={product.description ?? ''} id='description' required placeholder='설명' onChange={handleChange} className={INPUTCSS} />
 				<input type='text' name='options' value={product.options ?? ''} id='options' required placeholder='옵션(콤마로 구분)' onChange={handleChange} className={INPUTCSS} />
-				<button className='my-4 px-4 py-2 bg-main text-white font-semibold rounded-lg'>{isLoading ? '업로드 중....⏳' : '제품 등록하기'}</button>
+        <button className='my-4 px-4 py-2 bg-main text-white font-semibold rounded-lg'>{isLoading ? '업로드 중....⏳' : '제품 등록하기'}</button>
 			</form>
 		</section>
 	);

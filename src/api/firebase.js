@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { GoogleAuthProvider, getAuth, onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth';
-import { get, getDatabase, ref, set } from 'firebase/database';
+import { get, getDatabase, ref, remove, set } from 'firebase/database';
 import { v4 as uuid } from 'uuid';
 
 const firebaseConfig = {
@@ -54,9 +54,28 @@ export async function addNewProduct(image, product) {
 }
 
 export async function getProducts() {
-	return get(ref(database, 'products')).then((snapshot) => {
+  return get(ref(database, 'products'))
+    .then((snapshot) => {
 		if (snapshot.exists()) {
 			return Object.values(snapshot.val());
 		}
 	});
+}
+
+// Realtime Database - Carts
+export async function getCarts() {
+  return get(ref(database, 'carts'))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return Object.values(snapshot.val());
+    }
+  })
+}
+
+export async function addOrUpdateCarts(userId, product) {
+  return set(ref(database, `carts/${userId}/${product.id}`, product));
+}
+
+export async function removeCarts(userId, productId) {
+  return remove(ref(database, `carts/${userId}/${productId}`));
 }
