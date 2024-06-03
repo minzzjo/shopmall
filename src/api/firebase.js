@@ -47,7 +47,7 @@ export function logout() {
 // Realtime Database - Products
 export async function addNewProduct(image, product) {
   const id = uuid()
-  return set(ref(database, `/product/${id}`), {
+  return set(ref(database, `/products/${id}`), {
     ...product,
     id, price: parseInt(product.price), image, options: product.options.split(','),
   })

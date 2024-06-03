@@ -34,9 +34,9 @@ export default function NewProduct() {
   }
 
   return (
-    <section className='text-center'>
-      {file && <img src={URL.createObjectURL(file)} alt='local file' className='mx-auto w-5/12'/>}
-      {success && <p>{success}</p>}
+		<section className='text-center'>
+			{file && <img src={URL.createObjectURL(file)} alt='local file' className='mx-auto w-5/12' />}
+			{success && <p>{success}</p>}
 			<form className='flex flex-col items-center gap-4' onSubmit={handleSubmit}>
 				<input type='file' accept='image/*' name='file' id='file' required onChange={handleChange} className='w-9/12 px-4 py-2' />
 				<input type='text' name='title' value={product.title ?? ''} id='title' required placeholder='제품명' onChange={handleChange} className={INPUTCSS} />
@@ -44,7 +44,7 @@ export default function NewProduct() {
 				<input type='text' name='category' value={product.category ?? ''} id='category' required placeholder='카테고리' onChange={handleChange} className={INPUTCSS} />
 				<input type='text' name='description' value={product.description ?? ''} id='description' required placeholder='설명' onChange={handleChange} className={INPUTCSS} />
 				<input type='text' name='options' value={product.options ?? ''} id='options' required placeholder='옵션(콤마로 구분)' onChange={handleChange} className={INPUTCSS} />
-        <button className='my-4 px-4 py-2 bg-main text-white font-semibold rounded-lg'>제품 추가하기</button>
+				<button className='my-4 px-4 py-2 bg-main text-white font-semibold rounded-lg'>{isLoading ? '업로드 중....⏳' : '제품 등록하기'}</button>
 			</form>
 		</section>
 	);
