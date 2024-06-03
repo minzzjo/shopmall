@@ -49,7 +49,7 @@ export async function addNewProduct(image, product) {
   const id = uuid()
   return set(ref(database, `/product/${id}`), {
     ...product,
-    id, price: parseInt(product.price), image, options: product.options.split(''),
+    id, price: parseInt(product.price), image, options: product.options.split(','),
   })
 }
 
