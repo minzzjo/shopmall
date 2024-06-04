@@ -67,10 +67,8 @@ export async function getProducts() {
 export async function getCarts(userId) {
   return get(ref(database, `carts/${userId}`))
     .then((snapshot) => {
-      if (snapshot.exists()) {
-        const items = snapshot.val() || {};
-        return Object.values(items);
-    }
+      const items = snapshot.val() || {};
+      return Object.values(items);
   })
 }
 

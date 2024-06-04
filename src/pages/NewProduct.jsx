@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { uploadImage } from '../api/uploader';
-import { addNewProduct } from '../api/firebase';
+import useProducts from '../hooks/useProducts';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [success, setSuccess] = useState();
+
+  const { addProduct } = useProducts();
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -22,11 +24,12 @@ export default function NewProduct() {
     setIsLoading(true);
     uploadImage(file)
       .then((url) => {
-        addNewProduct(url, product)
-          .then(() => {
-            setSuccess('✅ 제품 등록이 완료되었습니다!');
+        addProduct.mutate({ product, url }, {
+          onSuccess: () => {
+            setSuccess('성공적으로 제품이 등록되었습니다!')
             setTimeout(() => setSuccess(null), 4000)
-          })
+          }
+        })
       })
       .finally(() => setIsLoading(false));
   }

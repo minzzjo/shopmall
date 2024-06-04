@@ -16,7 +16,7 @@ export default function ProductDetail() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const product = { id, image, title, price, category, option: selected, quantity: 1 };
-    addOrUpdateCarts(product, uid);
+    addOrUpdateCarts(uid, product);
     console.log(product);
     setSuccess('✅ 장바구니에 추가되었습니다 🛒')
     setSelected('');

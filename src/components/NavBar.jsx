@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthContext } from '../context/AuthContext';
-import { IoBagAddSharp, IoCartOutline } from 'react-icons/io5';
+import { IoBagAddSharp } from 'react-icons/io5';
 import User from './User';
 import Button from "./element/Button";
+import CartStatus from './CartStatus';
 
 export default function NavBar() {
 	const {user, login, logout} = useAuthContext();
@@ -17,7 +18,7 @@ export default function NavBar() {
 				<Link to='/products'>shop</Link>
 				{user && (
 					<Link to='/carts'>
-						<IoCartOutline className='text-3xl' />
+						<CartStatus />
 					</Link>
 				)}
 				{user && user.isAdmin && (
