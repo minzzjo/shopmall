@@ -1,27 +1,16 @@
 import React from 'react';
+import useCarts from '../hooks/useCarts';
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from 'react-icons/ai';
 import { RiDeleteBin5Fill } from 'react-icons/ri';
-import { addOrUpdateCarts, removeCarts } from '../api/firebase';
-import { useAuthContext } from '../context/AuthContext';
 
 export default function Cart({ product, product: { id, image, title, price, option, quantity } }) {
-  const { uid } = useAuthContext();
+  const { addOrUpdateCartItem, removeCartItem } = useCarts();
   const handleMinus = () => {
-    if (quantity < 2) {
-      return;
-    } else {
-      console.log('Minus!')
-      return addOrUpdateCarts(uid, { ...product, quantity: quantity - 1 });
-    }
+    if (quantity < 2) return;
+    addOrUpdateCartItem.mutate({...product, quantity: quantity - 1})
   }
-  const handlePlus = () => {
-    console.log('Plus!');
-    addOrUpdateCarts(uid, { ...product, quantity: quantity + 1 });
-  }
-  const handleRemove = () => {
-    console.log('remove!');
-    removeCarts(uid, id);
-  }
+  const handlePlus = () => addOrUpdateCartItem.mutate({ ...product, quantity: quantity + 1 });
+  const handleRemove = () => removeCartItem.mutate(id)
   return (
     <li className='flex flex-col'>
 				<section className='flex flex-row mb-4 px-4 items-center justify-center'>

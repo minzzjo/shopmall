@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { uploadImage } from '../api/uploader';
 import useProducts from '../hooks/useProducts';
+import Input from '../components/element/Input';
 
 export default function NewProduct() {
   const [product, setProduct] = useState({});
@@ -36,19 +37,17 @@ export default function NewProduct() {
 
   return (
 		<section className='text-center'>
-			{file && <img src={URL.createObjectURL(file)} alt='local file' className='mx-auto w-5/12' />}
+			{file && <img src={URL.createObjectURL(file)} alt='local file' className='mx-auto w-5/12 mb-6' />}
 			{success && <p>{success}</p>}
 			<form className='flex flex-col items-center gap-4' onSubmit={handleSubmit}>
-				<input type='file' accept='image/*' name='file' id='file' required onChange={handleChange} className='w-9/12 px-4 py-2' />
-				<input type='text' name='title' value={product.title ?? ''} id='title' required placeholder='제품명' onChange={handleChange} className={INPUTCSS} />
-				<input type='number' name='price' value={product.price ?? ''} id='price' required placeholder='가격(원)' onChange={handleChange} className={INPUTCSS} />
-				<input type='text' name='category' value={product.category ?? ''} id='category' required placeholder='카테고리' onChange={handleChange} className={INPUTCSS} />
-				<input type='text' name='description' value={product.description ?? ''} id='description' required placeholder='설명' onChange={handleChange} className={INPUTCSS} />
-				<input type='text' name='options' value={product.options ?? ''} id='options' required placeholder='옵션(콤마로 구분)' onChange={handleChange} className={INPUTCSS} />
+        <Input type='file' name='file' accept='image/*' onChange={handleChange} />
+        <Input type='text' name='title' value={product.title ?? ''} onChange={handleChange} placeholder='제품명'/>
+        <Input type='number' name='price' value={product.price ?? ''} onChange={handleChange} placeholder='가격(원)'/>
+        <Input type='text' name='category' value={product.category ?? ''} onChange={handleChange} placeholder='카테고리'/>
+        <Input type='text' name='description' value={product.description ?? ''} onChange={handleChange} placeholder='설명'/>
+        <Input type='text' name='options' value={product.options ?? ''} onChange={handleChange} placeholder='옵션(콤마로 구분)'/>
         <button className='my-4 px-4 py-2 bg-main text-white font-semibold rounded-lg'>{isLoading ? '업로드 중....⏳' : '제품 등록하기'}</button>
 			</form>
 		</section>
 	);
 }
-
-const INPUTCSS = 'w-9/12 px-4 py-2 border-2 border-zinc-200 hover:border-zinc-400 focus:bg-sky-50 outline-none'

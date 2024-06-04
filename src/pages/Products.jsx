@@ -4,6 +4,7 @@ import useProducts from '../hooks/useProducts';
 
 export default function Products() {
   const { productsQuery: { isLoading, error, data: products } } = useProducts();
+
   return (
     <div className='px-4'>
       {isLoading && <p>Loading...⏳</p>}

@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { addOrUpdateCarts } from '../api/firebase';
-import Button from "../components/element/Button";
 import { TiDelete } from 'react-icons/ti';
-import { useAuthContext } from '../context/AuthContext';
+import useCarts from '../hooks/useCarts';
+import Button from "../components/element/Button";
 
 export default function ProductDetail() {
   const { state: { product: { id, image, title, price, category, description, options } } } = useLocation();
   const [selected, setSelected] = useState('');
   const [success, setSuccess] = useState();
 
-  const { uid } = useAuthContext();
+  const { addOrUpdateCartItem } = useCarts();
   
   const handleChange = (e) => setSelected(e.target.value);
   const handleSubmit = (e) => {
     e.preventDefault();
     const product = { id, image, title, price, category, option: selected, quantity: 1 };
-    addOrUpdateCarts(uid, product);
-    console.log(product);
-    setSuccess('✅ 장바구니에 추가되었습니다 🛒')
+    addOrUpdateCartItem.mutate(product, {
+      onSuccess: () => {
+        setSuccess('장바구니에 추가되었습니다!');
+        setTimeout(() => setSuccess(null), 30000);
+      }
+    });
     setSelected('');
   }
 
